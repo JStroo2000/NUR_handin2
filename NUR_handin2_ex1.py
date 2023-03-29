@@ -33,7 +33,7 @@ def romberg(left, right, m, func, params):
     Returns
     -------
     float
-        The resukt of the numerical integration.
+        The result of the numerical integration.
 
     """
     h = right - left
@@ -94,13 +94,13 @@ def rejection_sampling(p, N, params,xrange=1,yrange=1):
         if y <= p_x:
             sample[counter] = x
             counter += 1
-            plt.plot(x,y,',')
+            
         #Return x and y to a usable form for a seed by multiplying by the modulus
         #Only works for this specific RNG generator, but I did not have time to
         #make a more general implementation.
         seed_x = x/xrange * 2**32
         seed_y = y/yrange * 2**32
-    plt.show()
+
     return sample
 
 def selection_sort(data, sortcol=None):
@@ -242,18 +242,19 @@ parameters[0] = A
 print('The value of A is: ',A)
 
 
-points = rejection_sampling(n_spherical, 10000, parameters,5,n_spherical(10**-4,*parameters))
-# binedges = np.logspace(-4,np.log10(5),num=20,endpoint=False)
+points = rejection_sampling(n_spherical, 10000, parameters,5,10**3)
+binedges = np.logspace(-4,np.log10(5),num=20,endpoint=False)
 
-# counts, bins= np.histogram(points, binedges)
-# plt.stairs(counts,bins,fill=True)
-# plt.plot(np.linspace(10**-4,5,10000),n_spherical(np.linspace(10**-4,5,10000),*parameters))
-# plt.yscale('log')
-# plt.xscale('log')
-# plt.title('Comparison of the distribution and samples from the distribution')
-# plt.xlabel('p(x)')
-# plt.ylabel('x')
-# plt.show()
+counts, bins= np.histogram(points, binedges)
+plt.stairs(counts,bins,fill=True)
+plt.plot(np.linspace(10**-4,5,10000),n_spherical(np.linspace(10**-4,5,10000),*parameters))
+plt.yscale('log')
+plt.xscale('log')
+plt.title('Comparison of the distribution and samples from the distribution')
+plt.ylabel('p(x)')
+plt.xlabel('x')
+plt.savefig('./plot/samples.pdf')
+plt.show()
 
 slope = (ridder(n,parameters, 1,10**-4,6,0.01))
 print('The value of dn/dx at x=1 is: ',slope)
@@ -280,5 +281,6 @@ plt.title('Cumulative distribution function')
 plt.xlabel('Number of galaxies')
 plt.ylabel('Radius x')
 plt.xscale('log')
+plt.savefig('./plot/cumulative.pdf')
 plt.show()
 
