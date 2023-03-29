@@ -2,9 +2,9 @@
 echo "Run handin template"
 
 echo "Creating the plotting directory if it does not exist"
-if [ ! -d "plots" ]; then
+if [ ! -d "plot" ]; then
   echo "Directory does not exist create it!"
-  mkdir plots
+  mkdir plot
 fi
 
 
