@@ -1,0 +1,33 @@
+\section{Satellite Galaxies around a Massive Central}
+This section is about question 1: Satellite Galaxies around a massive central.
+The functions and script used for this question are the following:
+\lstinputlisting{NUR_handin2_ex1.py}
+The results printed by this code are 
+\lstinputlisting{NUR_handin2_ex1.txt}
+\section*{a)}
+To find the value for A printed above, I first rewrote the spherical integral so that it could be solved with a 1D integrator. This was possible because n(x) only has a radial term:
+\begin{equation}
+    \int\int\int_Vn(x)dV = \int_0^5 4\pi A\langle N_{sat}\rangle \left(\frac{x}{b}\right)^{a-3}x^2exp \left[  \left(-\frac {x}{b} \right) ^c \right]dx
+\end{equation}
+This integral was then calculated numerically using the Romberg method, and divided by $\langle N_sat\rangle=100$ to get the normalization constant A.
+\section*{b)}
+\begin{figure}[!h]
+    \centering
+    \includegraphics{./plot/samples.pdf}
+    \caption{A comparison of the probability distribution and 10,000 samples from that distribution.}
+    \label{fig:samples}
+\end{figure}
+\section*{c)}
+The 100 galaxies were selected by assigning a random number to all 10,000 index numbers, sorting those, and then selecting the 100 indices with the lowest random numbers. In this way the sample conforms to all the demands of the question.
+\begin{figure}[h!]
+    \centering
+    \includegraphics{./plot/cumulative.pdf}
+    \caption{The number of galaxies within a radius, based on a random sample of 100 galaxies}
+    \label{fig:cumulative}
+\end{figure}
+\section*{d)}
+Analytically, 
+\begin{equation}
+    \frac{dn}{dx} = A \langle N_{sat}\rangle exp \left[ - \left( \frac{x}{b} \right) ^c \right] \left( \frac{x}{b} \right) ^a b^{3} x^{-4} ( a - 3- \left( \frac{x}{b} \right) ^c )
+\end{equation}
+Filling in the relevant values at x = 1 results in $\frac{dn(1)}{dx} = -0.625324485666$. I used Ridder's method to numerically calculate the same value, as shown above.

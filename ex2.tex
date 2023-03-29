@@ -1,0 +1,40 @@
+\section{Heating and Cooling in HII regions}
+This section is about question 2: heating and cooling in HII regions.
+The functions and script used for this question are the following:
+\lstinputlisting{NUR_handin2_ex2.py}
+The results printed by this code are
+\lstinputlisting{NUR_handin2_ex2.txt}.
+\subsection*{a)}
+For this question the False Position root finding algorithm was used, because it is relatively simple and always converges. However, it is not the fastest algorithm. Nevertheless, I have found the root of the simple equilibrium function sufficiently accurately.
+
+\subsection*{b)}
+For this question the False Position algorithm was used once again. In this case, the guarantee of convergence was extra important, due to the large amount of very small numbers. Other algorithms, like Newton-Raphson, may have to deal with numerical overflow due to these small values, but False Position just keeps working. However, especially in the case for $n_e = 10^{-4} cm^{-3}$, a high target accuracy is necessary to return the correct location for the root. This is because the equilibrium functions approach 0 very closely over a large range of temperatures. As a result, the False Position algorithm takes a large amount of steps to find the root, in particular for the higher densities.\\
+The resulting temperatures for the varying densities are very different. For $N-e = 10^{-4} cm^{-3}$ the temperature becomes incredibly, perhaps unrealistically, high, for $n_e = 1 cm^{-3}$ the temperature is of the same order as a star's surface temperature, and for $n_e = 10^4 cm^{-3}$ the temperature finally reaches a reasonable, though still high level.
+
+\begin{figure}[!h]
+    \centering
+    \includegraphics{./plot/root1.pdf}
+    \caption{The result of the root finding for the simplified equilibrium function.}
+    \label{fig:root1}
+\end{figure}
+
+\begin{figure}[!h]
+    \centering
+    \includegraphics{./plot/root2}
+    \caption{The result of the root finding for the equilibrium function with $n_e = 10^{-4} cm^{-3}$.}
+    \label{fig:root2}
+\end{figure}
+
+\begin{figure}[!h]
+    \centering
+    \includegraphics{./plot/root3}
+    \caption{The result of the root finding for the equilibrium function with $n_e = 1 cm^{-3}$.}
+    \label{fig:root3}
+\end{figure}
+
+\begin{figure}[!h]
+    \centering
+    \includegraphics{./plot/root4}
+    \caption{The result of the root finding for the equilibrium function with $n_e = 10^4 cm^{-3}$}
+    \label{fig:root4}
+\end{figure}
