@@ -1,5 +1,6 @@
+#!/bin/bash
 
-echo "Run handin template"
+echo "Run handin 2"
 
 echo "Creating the plotting directory if it does not exist"
 if [ ! -d "plot" ]; then
