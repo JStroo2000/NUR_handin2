@@ -51,7 +51,7 @@ plt.title('Simplified Heating/Cooling equilibrium')
 plt.xlabel('Temperature T (K)')
 plt.ylabel('Difference between heating and cooling')
 plt.savefig('./plot/root1.pdf')
-plt.show()
+plt.close()
 
 print('In the simplified model, the equilibrium temperature is ', root1)
 n_e = [10**-4,1, 10**4]
@@ -67,5 +67,5 @@ for i  in range(len(n_e)):
     plt.xlabel('Temperature T (K)')
     plt.ylabel("Difference between heating and cooling")
     plt.savefig('./plot/root{}.pdf'.format(i+2))
-    plt.show()
+    plt.close()
     print('With a density of ', n_e[i], ', the equilibrium temperature is', root2)
