@@ -1,7 +1,5 @@
 #!/bin/bash
-
 echo "Run handin 2"
-
 echo "Creating the plotting directory if it does not exist"
 if [ ! -d "plot" ]; then
   echo "Directory does not exist create it!"
@@ -24,5 +22,4 @@ pdflatex main.tex
 bibtex main.aux
 pdflatex main.tex
 pdflatex main.tex
-
 
